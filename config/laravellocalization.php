@@ -346,4 +346,20 @@ return [
     'urlsIgnored' => ['/skipped'],
 
     'httpMethodsIgnored' => ['POST', 'PUT', 'PATCH', 'DELETE'],
+
 ];
+class_alias('Mcamara\LaravelLocalization\Facades\LaravelLocalization', 'LaravelLocalization');
+config([
+    'laravellocalization.supportedLocales' => [
+       'ar'   =>array( 'name' => 'Arabic', 'script' => 'Arab', 'native' => 'العربية', 'regional' => 'ar_AE'),
+        'en'  => array( 'name' => 'English', 'script' => 'Latn', 'native' => 'English' ),
+    ],
+    'laravellocalization.useAcceptLanguageHeader' => true,
+    'laravellocalization.hideDefaultLocaleInURL' => true
+]);
+
+$this->app['laravellocalization'] = $this->app->share(
+    function () {
+        return new Mcamara\LaravelLocalization\LaravelLocalization();
+    }
+);
