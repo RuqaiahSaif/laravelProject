@@ -76,7 +76,8 @@ Route::get('/reset-password/{token}', [ResetPasswordController::class, 'getPassw
 Route::post('/reset-password', [ResetPasswordController::class, 'updatePassword'])->name('update-password');
 
 Route::group([
-    // 'prefix' => \Mcamara\LaravelLocalization\Facades\LaravelLocalization::setLocale(),
+    'prefix' => LaravelLocalization::setLocale(),
+    //
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
 ], function () {
     //  mywallet view
